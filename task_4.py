@@ -23,6 +23,9 @@ def show_phone(args, contacts):
     else:
         return "Name was not found"
     
+def all(contacts):
+    return [f"{contact} Phone: {contacts[contact]}" for contact in contacts]
+    
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
@@ -42,8 +45,7 @@ def main():
         elif command == "phone":
             print(show_phone(args, contacts))
         elif command == "all":
-            for contact in contacts:
-                print(f"{contact}: {contacts[contact]}")
+            print(all(contacts))
         else:
             print("Invalid command.")
 
