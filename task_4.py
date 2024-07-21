@@ -12,21 +12,17 @@ def change_contact(args, contacts):
     name, phone = args
     if name in contacts:
         contacts[name] = phone
-        return print("Contact change.")
+        return "Contact change."
     else:
-        return print("Name was not found")
+        return "Name was not found"
     
 def show_phone(args, contacts):
     name, = args
     if name in contacts:
-        return print(f'{name}\'s phone number: {contacts[name]}')
+        return f'{name}\'s phone number: {contacts[name]}'
     else:
-        return print("Name was not found")
+        return "Name was not found"
     
-def all_contacts(contacts):
-    for name in contacts:
-        print(f'Name: {name} Number: {contacts[name]}')
-
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
@@ -42,11 +38,12 @@ def main():
         elif command == "add":
             print(add_contact(args, contacts))
         elif command == "change":
-            change_contact(args, contacts)
+            print(change_contact(args, contacts))
         elif command == "phone":
-            show_phone(args, contacts)
+            print(show_phone(args, contacts))
         elif command == "all":
-            all_contacts(contacts)
+            for contact in contacts:
+                print(f"{contact}: {contacts[contact]}")
         else:
             print("Invalid command.")
 
