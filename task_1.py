@@ -8,13 +8,17 @@ def total_salary(path):
                 name, salary = person.split(',')
                 total_salary += float(salary)
     except FileNotFoundError:
-        return print("File was not found")
+        return "File was not found"
     except ValueError:
-        return print("Not enough data in file or wrong format of data") 
+        return "Not enough data in file or wrong format of data" 
     except UnboundLocalError:
-        return print("Cannot access local variable")
-           
-    avarage_salary = total_salary / len(data_from_file)
+        return "Cannot access local variable"
+    
+    try:
+        avarage_salary = total_salary / len(data_from_file)
+    except ZeroDivisionError:
+        return "Not allowed to divide 0"
+
                 
     salary_result = total_salary, avarage_salary
     print(f"Загальна сума заробітної плати: {total_salary}, Середня заробітна плата: {avarage_salary}")
